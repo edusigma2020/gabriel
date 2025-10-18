@@ -23,6 +23,7 @@
         align-items: center;
         height: 100vh;
         margin: 0;
+        transition: background 1s ease;
       }
 
       h1 {
@@ -33,11 +34,11 @@
       }
 
       #saudacao {
-          font-family: "Luckiest Guy", cursive;
-          font-weight: 400;
-          font-style: normal;
-          font-size: 4em;
-        }
+        font-family: "Luckiest Guy", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 4em;
+      }
 
       #contador {
         display: flex;
@@ -77,13 +78,8 @@
       }
 
       @keyframes flutuar {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-6px);
-        }
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
       }
 
       footer {
@@ -91,68 +87,27 @@
         font-size: 0.9em;
         color: #555;
       }
+
+      /* === Mensagem de feliz aniversário === */
+      #mensagem {
+        display: none;
+        font-family: "Luckiest Guy", cursive;
+        font-size: 4em;
+        color: #ff4081;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        animation: brilhar 1.5s infinite alternate;
+      }
+
+      @keyframes brilhar {
+        from { transform: scale(1); opacity: 0.8; }
+        to { transform: scale(1.05); opacity: 1; }
+      }
     </style>
   </head>
   <body>
     <h1 id="saudacao">Olá, Gabriel! 🎁</h1>
-    <h1>Contagem regressiva para o seu aniversário: 🎂</h1>
+    <h1 id="titulo-contagem">Contagem regressiva para o seu aniversário: 🎂</h1>
 
     <div id="contador">
-      <div class="bloco">
-        <div class="numero" id="anos">0</div>
-        <div class="label">Anos</div>
-      </div>
-      <div class="bloco">
-        <div class="numero" id="meses">0</div>
-        <div class="label">Meses</div>
-      </div>
-      <div class="bloco">
-        <div class="numero" id="dias">0</div>
-        <div class="label">Dias</div>
-      </div>
-      <div class="bloco">
-        <div class="numero" id="horas">0</div>
-        <div class="label">Horas</div>
-      </div>
-      <div class="bloco">
-        <div class="numero" id="minutos">0</div>
-        <div class="label">Minutos</div>
-      </div>
-      <div class="bloco">
-        <div class="numero" id="segundos">0</div>
-        <div class="label">Segundos</div>
-      </div>
-    </div>
-
-    <footer>
-      <p>Data de nascimento: 18 de outubro de 2017</p>
-    </footer>
-
-    <script>
-      function atualizarContagem() {
-        const agora = new Date();
-        let proximo = new Date(agora.getFullYear(), 9, 18); // mês 9 = outubro
-        if (agora > proximo) proximo = new Date(agora.getFullYear() + 1, 9, 18);
-
-        const diff = proximo - agora;
-
-        const segundos = Math.floor(diff / 1000) % 60;
-        const minutos = Math.floor(diff / (1000 * 60)) % 60;
-        const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
-        const dias = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
-        const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44)) % 12;
-        const anos = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-
-        document.getElementById("anos").textContent = anos;
-        document.getElementById("meses").textContent = meses;
-        document.getElementById("dias").textContent = dias;
-        document.getElementById("horas").textContent = horas;
-        document.getElementById("minutos").textContent = minutos;
-        document.getElementById("segundos").textContent = segundos;
-      }
-
-      atualizarContagem();
-      setInterval(atualizarContagem, 1000);
-    </script>
-  </body>
-</html>
+      <div class="bloco"><div class="numero" id="anos">0</div><div class="label">Anos</div></div>
+      <div class="blo
