@@ -126,7 +126,12 @@
     <script>
       function atualizarContagem() {
         const agora = new Date();
-        const proximo = new Date(agora.getFullYear(), 9, 18); // mês 9 = outubro
+       
+        let proximo = new Date(agora.getFullYear(), 9, 18);
+
+          if (agora > proximo) {
+            proximo = new Date(agora.getFullYear() + 1, 9, 18);
+          }
 
         const diff = proximo - agora;
 
@@ -159,4 +164,5 @@
     </script>
   </body>
 </html>
+
 
